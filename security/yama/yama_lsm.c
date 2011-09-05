@@ -125,7 +125,7 @@ static int yama_task_prctl(int option, unsigned long arg2, unsigned long arg3,
 		return rc;
 
 	switch (option) {
-	case PR_SET_PTRACER:
+/*	case PR_SET_PTRACER:
 		rcu_read_lock();
 		if (!thread_group_leader(myself))
 			myself = myself->group_leader;
@@ -151,7 +151,7 @@ static int yama_task_prctl(int option, unsigned long arg2, unsigned long arg3,
 				put_task_struct(tracer);
 			}
 		}
-
+*/
 		put_task_struct(myself);
 		break;
 	}
@@ -389,7 +389,7 @@ static struct security_operations yama_ops = {
 	.inode_follow_link =	yama_inode_follow_link,
 	.path_link =		yama_path_link,
 	.task_prctl =		yama_task_prctl,
-	.task_free =		yama_task_free,
+//	.task_free =		yama_task_free,
 };
 
 #ifdef CONFIG_SYSCTL
