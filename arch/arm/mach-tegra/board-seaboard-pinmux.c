@@ -447,3 +447,39 @@ void __init picasso_pinmux_init(void)
 	tegra_gpio_config(picasso_gpio_table, ARRAY_SIZE(picasso_gpio_table));
 }
 #endif
+
+#ifdef CONFIG_MACH_TF101
+#include "board-tf101.h"
+static struct tegra_gpio_table tf101_gpio_table[] = {
+        { .gpio = TEGRA_GPIO_BACKLIGHT, .enable = true },
+        { .gpio = TF101_GPIO_ULPI_RESET,      .enable = true },
+        { .gpio = TEGRA_GPIO_MXT_IRQ,   .enable = true },
+        { .gpio = TEGRA_GPIO_VENTANA_TS_RST,    .enable = true },
+        { .gpio = TEGRA_GPIO_AC_ONLINE, .enable = true },
+        { .gpio = TEGRA_GPIO_VENTANA_DISABLE_CHARGER,   .enable = true },
+        { .gpio = TF101_GPIO_HP_DETECT,       .enable = true },
+        { .gpio = TF101_GPIO_MIC_EN_INT,      .enable = true },
+        { .gpio = TEGRA_GPIO_VENTANA_EN_MIC_EXT,        .enable = true },
+        { .gpio = TEGRA_GPIO_WM8903_IRQ,        .enable = true },
+        { .gpio = TEGRA_GPIO_NCT1008_THERM2_IRQ,        .enable = true },
+        { .gpio = TF101_GPIO_KEY_VOLUMEUP,   .enable = true },
+        { .gpio = TF101_GPIO_KEY_VOLUMEDOWN, .enable = true },
+        { .gpio = TF101_GPIO_KEY_POWER,       .enable = true },
+        { .gpio = TEGRA_GPIO_BT_RESET,  .enable = true },
+        { .gpio = TEGRA_GPIO_WLAN_POWER,        .enable = true },
+        { .gpio = TEGRA_GPIO_SD2_CD,    .enable = true },
+        { .gpio = TEGRA_GPIO_SD2_POWER, .enable = true },
+        { .gpio = TF101_GPIO_GPS,     .enable = true },
+};
+
+void __init tf101_pinmux_init(void)
+{
+        wm8903_gpio_init();
+        update_pinmux(ventana_pinmux, ARRAY_SIZE(ventana_pinmux));
+        tegra_pinmux_config_table(seaboard_pinmux, ARRAY_SIZE(seaboard_pinmux));
+
+        tegra_drive_pinmux_config_table(seaboard_drive_pinmux,
+                                        ARRAY_SIZE(seaboard_drive_pinmux));
+        tegra_gpio_config(tf101_gpio_table, ARRAY_SIZE(tf101_gpio_table));
+}
+#endif

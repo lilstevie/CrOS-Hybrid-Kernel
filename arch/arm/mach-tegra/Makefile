@@ -68,3 +68,10 @@ obj-${CONFIG_MACH_PICASSO}		+= board-seaboard-pinmux.o
 obj-${CONFIG_MACH_PICASSO}		+= board-picasso-power.o
 obj-${CONFIG_MACH_PICASSO}		+= board-seaboard-panel.o
 obj-${CONFIG_MACH_PICASSO}		+= board-picasso-memory.o
+
+obj-${CONFIG_MACH_TF101}              += board-tf101.o
+obj-${CONFIG_MACH_TF101}              += board-seaboard-pinmux.o
+obj-${CONFIG_MACH_TF101}              += board-tf101-power.o
+obj-${CONFIG_MACH_TF101}              += board-seaboard-panel.o
+obj-${CONFIG_MACH_TF101}              += board-tf101-memory.o
+
