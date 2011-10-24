@@ -659,3 +659,14 @@ MACHINE_START(TF101, "tf101")
 	.reserve		= tegra_tf101_reserve,
 	.init_machine	= tegra_tf101_init,
 MACHINE_END
+
+MACHINE_START(VENTANA, "ventana")
+	.boot_params	= 0x00000100,
+        .map_io         = tegra_map_common_io,
+        .init_early     = tegra_init_early,
+        .init_irq       = tegra_init_irq,
+        .timer          = &tegra_timer,
+        .reserve	= tegra_tf101_reserve,
+        .init_machine   = tegra_tf101_init,
+MACHINE_END
+
